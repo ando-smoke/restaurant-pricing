@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="restaurant">
+  <head>
+    <meta charset="UTF-8">
+    <title>Restaurant Pricing</title>
+    <script src="lib/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/IceCreamController.js"></script>
+    <script src="controllers/PizzaController.js"></script>
+    <script src="services/ProductsFactory.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+
+      <h1>Restaurant Pricing</h1><br />
+      <div ng-controller="PizzaCtrl">
+        {{basket}}
+        <div class="row">
+          <h2>Current Products in Basket:</h2>
+
+          <ul>
+            <li ng-repeat="item in basket">
+              {{item.type + " " + item.price.toFixed(2)}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
