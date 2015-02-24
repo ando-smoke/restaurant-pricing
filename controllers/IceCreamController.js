@@ -2,11 +2,12 @@ restaurant.controller('IceCreamCtrl',
   function IceCreamCtrl ($scope, ProductFactory) {
 
   $scope.basket = ProductFactory.basket;
-  $scope.offeredIceCreams = ProductFactory.offeredIceCreams;
+  $scope.ProductFactory = ProductFactory;
 
   $scope.addIceCream = function() {
     var iceCream = {type: $scope.iceCream.type,
-      price: parseFloat($scope.iceCream.price)};
+      price: parseFloat($scope.iceCream.price),
+      foodCategory: $scope.iceCream.foodCategory};
     $scope.basket.push(iceCream);
     $scope.iceCream = null;
   };

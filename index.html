@@ -13,6 +13,8 @@
   <body>
     <div class="container">
       <h1 class="well">Restaurant Pricing</h1><br />
+
+
       <div ng-controller="PizzaCtrl">
         <div class="page-header">
           <h3>Pizza Register</h3>
@@ -22,15 +24,18 @@
             <h2>Current Products in Basket:</h2>
             <ul>
               <li ng-repeat="item in basket">
-                {{item.type + " " + item.price.toFixed(2)}}
+                {{item.type + " $" + item.price.toFixed(2)}}
               </li>
             </ul>
+            <h4> Pizza Total: ${{ProductFactory.categoryPurchaseAmount('pizza').toFixed(2)}}</h4>
+            <h4>Grand Total: ${{ProductFactory.totalPurchaseAmount().toFixed(2)}}</h4>
           </div>
+
           <div class="col-sm-6 well">
             <h2>Add pizza:</h2>
             <form ng-submit="addPizza()" role="form">
               <div class="radio">
-                <span ng-repeat="item in offeredPizzas">
+                <span ng-repeat="item in filtered = (ProductFactory.offeredItems | filter:{foodCategory: 'pizza'})">
                     <label for="{{item.type}}">
                     <input type="radio" ng-model="$parent.pizzaPie" id="{{item.type}}"
                       name="pizzaChoice" ng-value="{{item}}">
@@ -55,16 +60,18 @@
 
             <ul>
               <li ng-repeat="item in basket">
-                {{item.type + " " + item.price.toFixed(2)}}
+                {{item.type + " $" + item.price.toFixed(2)}}
               </li>
             </ul>
+            <h4> Ice Cream Total: ${{ProductFactory.categoryPurchaseAmount('ice cream').toFixed(2)}}</h4>
+            <h4>Total: ${{ProductFactory.totalPurchaseAmount().toFixed(2)}}</h4>
           </div>
 
           <div class="col-sm-6 well">
             <h2>Add ice cream:</h2>
             <form ng-submit="addIceCream()" role="form">
               <div class="radio">
-                <span ng-repeat="item in offeredIceCreams">
+                <span ng-repeat="item in filtered = (ProductFactory.offeredItems | filter:{foodCategory: 'ice cream'})">
                     <label for="{{item.type}}">
                     <input type="radio" ng-model="$parent.iceCream" id="{{item.type}}"
                       name="iceCreamChoice" ng-value="{{item}}">
