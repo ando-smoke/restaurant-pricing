@@ -12,18 +12,69 @@
   </head>
   <body>
     <div class="container">
-
-      <h1>Restaurant Pricing</h1><br />
+      <h1 class="well">Restaurant Pricing</h1><br />
       <div ng-controller="PizzaCtrl">
-        {{basket}}
+        <div class="page-header">
+          <h3>Pizza Register</h3>
+        </div>
         <div class="row">
-          <h2>Current Products in Basket:</h2>
+          <div class="col-sm-6">
+            <h2>Current Products in Basket:</h2>
+            <ul>
+              <li ng-repeat="item in basket">
+                {{item.type + " " + item.price.toFixed(2)}}
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-6 well">
+            <h2>Add pizza:</h2>
+            <form ng-submit="addPizza()" role="form">
+              <div class="radio">
+                <span ng-repeat="item in offeredPizzas">
+                    <label for="{{item.type}}">
+                    <input type="radio" ng-model="$parent.pizzaPie" id="{{item.type}}"
+                      name="pizzaChoice" ng-value="{{item}}">
+                      {{item.type + " $" + item.price.toFixed(2)}}
+                    </label>
+                  <span>
+              </div>
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
 
-          <ul>
-            <li ng-repeat="item in basket">
-              {{item.type + " " + item.price.toFixed(2)}}
-            </li>
-          </ul>
+
+      <div ng-controller="IceCreamCtrl">
+        <div class="page-header">
+          <h3>Ice Cream Register</h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Current Products in Basket:</h2>
+
+            <ul>
+              <li ng-repeat="item in basket">
+                {{item.type + " " + item.price.toFixed(2)}}
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-sm-6 well">
+            <h2>Add ice cream:</h2>
+            <form ng-submit="addIceCream()" role="form">
+              <div class="radio">
+                <span ng-repeat="item in offeredIceCreams">
+                    <label for="{{item.type}}">
+                    <input type="radio" ng-model="$parent.iceCream" id="{{item.type}}"
+                      name="iceCreamChoice" ng-value="{{item}}">
+                      {{item.type + " $" + item.price.toFixed(2)}}
+                    </label>
+                  <span>
+              </div>
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
