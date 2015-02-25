@@ -27,6 +27,7 @@
                 <ul>
                   <li ng-repeat="item in filtered = (basket | filter:{foodCategory: 'pizza'})">
                     {{item.type + " $" + item.price.toFixed(2)}}
+                    <a ng-click="deletePizza(item)">Delete</a>
                   </li>
                 </ul>
               </li>
@@ -74,6 +75,7 @@
                 <ul>
                   <li ng-repeat="item in filtered = (basket | filter:{foodCategory: 'ice cream'})">
                     {{item.type + " $" + item.price.toFixed(2)}}
+                    <a ng-click="deleteIceCream(item)">Delete</a>
                   </li>
                 </ul>
               </li>

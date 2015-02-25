@@ -12,4 +12,8 @@ restaurant.controller('PizzaCtrl',
     $scope.pizzaPie = null;
   };
 
+  $scope.deletePizza = function(pizza) {
+    var index = $scope.basket.indexOf(pizza);
+    $scope.basket.splice(index, 1);
+  };
 });

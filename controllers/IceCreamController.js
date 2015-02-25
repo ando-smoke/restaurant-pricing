@@ -11,4 +11,9 @@ restaurant.controller('IceCreamCtrl',
     $scope.basket.push(iceCream);
     $scope.iceCream = null;
   };
+
+  $scope.deleteIceCream = function(iceCream) {
+    var index = $scope.basket.indexOf(iceCream);
+    $scope.basket.splice(index, 1);
+  };
 });
